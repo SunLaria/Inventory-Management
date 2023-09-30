@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="info-container">
+<h1 style="text-align: center;">Statistics</h1>
+    <div id="info">
+        <div class="counter" id="items-count">Total Items:<br><br>123</div>
+        <div class="counter" id="purchases-count">Total Purchases:<br><br>123</div>
+        <div class="counter" id="listing-count">New Listings:<br><br>126</div>
+    </div>
+</div>
+<H2 style="text-align: center;margin-top:0;">Shortcuts</H2>
+<div id="shortcuts">
+    <div id="product-shortcuts">
+        <h2 style="text-align: center; margin-left:58px">Products</h2>
+        <a href="" class="button">Search Product</a>
+        <a href="" class="button">Add Quantity</a>
+        <a href="" class="button">Add Product</a>
+    </div>
+    <div id="purchases-shortcuts">
+        <h2 style="text-align: center;">Purchases</h2>
+        <form action="" method="GET">
+            <label for="">Search Purchase:</label>
+            <input type="number" placeholder="Purchase Number">
+            <input type="submit" value="Search!">
+        </form>
+    </div>
+</div>
+{% endblock %}
