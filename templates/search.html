@@ -1,0 +1,66 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 style="text-align: center;">Search Result:</h2>
+<div id="table_container">
+<table class="table" style="width: 55.5vw;">
+    <tr>
+        <th style="border-top-left-radius: 15px;">
+            <input type="checkbox" name="" id="" checked disabled>
+        </th>
+        <th>
+            Id
+        </th>
+        <th>
+            Products
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Buyer
+        </th>
+        <th>
+            Date
+        </th>
+        <th style="border-top-right-radius: 15px; border:none; padding:0">
+            Total Price
+        </th>
+    </tr>
+    {% if data|length > 0 %}
+    {% for product in data %}
+    <tr>
+        <td>
+            <input type="checkbox" name={{product.name}} id="">
+        </td>
+        <td>
+            {{ product.id }}
+        </td>
+        <td>
+            {{ product.products }}
+        </td>
+        <td>
+            {{ product.quantity }}
+        </td>
+        <td>
+            {{ product.buyer }}
+        </td>
+        <td>
+            {{ product.date }}
+        </td>
+        <td style="border-right: none;">
+            {{ product.price }}
+        </td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <h1>Nothing Found...</h1>
+    {% endif %}
+</table>
+</div>
+<div id="purchases-buttons">
+    <a href="" class="button">Refund Purchase</a>
+    <a href="" class="button">Delete Purchase</a>
+</div>
+
+{% endblock %}
