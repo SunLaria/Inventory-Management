@@ -22,9 +22,17 @@ def delete(table_name,id):
      query(f'DELETE FROM {table_name} WHERE id = {id}')
      return print('deleted')
 
-def search(table_name,id):
-    data = query(f"SELECT * FROM {table_name} WHERE id LIKE {id}") 
-    return [dict(zip([name[0] for name in data.description],i)) for i in data]
+def search(table_name,idd):
+    if len(idd) == 1:
+        data = query(f"SELECT * FROM {table_name} WHERE id LIKE {idd}") 
+        return [dict(zip([name[0] for name in data[0].description],i)) for i in data]
+    else:
+         data = [query(f"SELECT * FROM {table_name} WHERE id LIKE {i}") for i in idd]
+         return [dict(zip([name[0] for name in data[0].description],i)) for i in data]
+
+         
+              
+              
 
 def update_quantity(table_name,id,quantity):
     query(f"UPDATE {table_name} SET quantity = {quantity} WHERE id LIKE {id}")

@@ -59,9 +59,9 @@
 </table>
 </div>
 <div id="products-buttons">
-    <button href="" id="" class="button" onclick='set_popup("add_product")'>Add Product</button>
+    <button href="" id="" class="button" onclick='add_product_button()'>Add Product</button>
     <button href="" class="button" onclick='update_quantity_button()'>Update Quantity</button>
-    <button href="" class="button" onclick='set_popup("delete_product")'>Delete Product</button>
+    <button href="" class="button" onclick='delete_product_button()'>Delete Product</button>
 </div>
 <div id="iframe" hidden>
     <img src="/static/exit.png" alt="" width="30px" id="exit_button" onclick="exitpopup()">
@@ -97,9 +97,19 @@
         }
     }
 
-    function set_popup(popup_name){
-        const popups = {"add_product":"/add-product","delete_product":"/delete_product"}
-        document.getElementById("popupframe").src=popups[popup_name]
+    function delete_product_button(){
+        let id = get_checked()
+        if (id.length>=1){
+            document.getElementById("popupframe").src="/delete_product?id="+id
+            document.getElementById("iframe").hidden=false
+        }else{
+            alert("Check One Or More Products")
+        }
+    }
+
+
+    function add_product_button(){
+        document.getElementById("popupframe").src="/add-product"
         document.getElementById("iframe").hidden=false
     }
     function exitpopup(){

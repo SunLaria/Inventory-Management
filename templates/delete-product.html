@@ -22,6 +22,14 @@
 </head>
 <body>
     <form action="/delete-quantity" method="POST" target="_parent">
+        <input type="text" name="id" id="" value="{{ product.id }}" hidden>
+        <h1>Delete Products??</h1>
+        <div>
+        {% for number in product.id %}
+        {{ product.id }}
+        {% endfor %}
+        </div>
+        <button class="small-button">Yes</button>
         
     </form>
 </body>
