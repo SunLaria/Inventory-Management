@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Document</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 20vw;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        input{
+            background-color: whitesmoke;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="/add-product" method="POST" target="_parent">
+        <h1>Add Product</h1>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" required>
+        <label for="category">Category:</label>
+        <input type="text" name="category" id="category" required>
+        <label for="price">Price:</label>
+        <input type="number" name="price" id="price" required>
+        <input type="submit" value="Add Product" class="small-button" style="margin: 30px;">
+    </form>
+</body>
+</html>

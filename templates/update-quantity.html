@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Document</title>
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 20vw;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        input{
+            background-color: whitesmoke;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="/update-quantity" method="POST" target="_parent">
+        <input type="text" name="id" id="" value="{{ product.id }}" hidden>
+        <h1>Update Quantity</h1>
+        <label for="idinput">Product ID:</label>
+        <input type="text" name="id" id="idinput" value="{{ product.id }}" disabled>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="{{ product.name }}" disabled>
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" id="quantity" value="{{ product.quantity }}">
+        <input type="submit" value="Update" class="small-button" style="margin: 30px;">
+    </form>
+</body>
+</html>

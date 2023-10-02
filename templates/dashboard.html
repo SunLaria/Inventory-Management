@@ -3,7 +3,7 @@
 <div id="info-container">
 <h2 style="text-align: center;">Statistics</h2>
     <div id="info">
-        <div class="counter" id="items-count">Total Items:<br><br>{{ products_data|length  }}</div>
+        <div class="counter" id="items-count">Total Products:<br><br>{{ products_data|length  }}</div>
         <div class="counter" id="purchases-count">Total Purchases:<br><br>{{ purchases_data|length  }}</div>
         <div class="counter" id="listing-count">New Listings:<br><br>{{ listings_data|length  }}</div>
     </div>
@@ -14,9 +14,20 @@
         <h2 style="text-align: center;">Purchases</h2>
         <form action="/searchp" method="GET">
             <label for="">Search Purchase:</label>
-            <input type="number" placeholder="Purchase Number" id="" name="pid">
+            <input type="number" placeholder="Purchase Number" id="" name="pid" required>
             <input type="submit" value="Search!" id="small-button">
         </form>
     </div>
 </div>
+<script>
+    document.getElementById("items-count").addEventListener("click",function(){
+        window.location.href= "/products";
+    })
+    document.getElementById("purchases-count").addEventListener("click",function(){
+        window.location.href= "/purchases";
+    })
+    document.getElementById("listing-count").addEventListener("click",function(){
+        window.location.href= "/listings";
+    })
+</script>
 {% endblock %}

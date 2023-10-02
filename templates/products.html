@@ -30,7 +30,7 @@
     {% for product in data %}
     <tr>
         <td>
-            <input type="checkbox" name="{{ product.name }}" id="">
+            <input type="checkbox" id="{{ product.id }}">
         </td>
         <td>
             {{ product.id }}
@@ -59,11 +59,14 @@
 </table>
 </div>
 <div id="products-buttons">
-    <a href="" class="button">Add Product</a>
-    <a href="" class="button">Add Quantity</a>
-    <a href="" class="button">Delete Product</a>
+    <button href="" id="" class="button" onclick='set_popup("add_product")'>Add Product</button>
+    <button href="" class="button" onclick='update_quantity_button()'>Update Quantity</button>
+    <button href="" class="button" onclick='set_popup("delete_product")'>Delete Product</button>
 </div>
-
+<div id="iframe" hidden>
+    <img src="/static/exit.png" alt="" width="30px" id="exit_button" onclick="exitpopup()">
+<iframe id="popupframe" src="" frameborder="0"  height="370" width="400"></iframe>
+</div>
 <script>
     for (let i = 1; i < document.getElementsByTagName("tr").length; i++) {
         let current = document.getElementsByTagName("tr")[i]
@@ -73,6 +76,35 @@
             }else{
                 current.querySelector("[type=checkbox]").checked=false;
             }})}
+    
+    function get_checked(){
+        var list = []
+        for (let i = 1; i < document.getElementsByTagName("tr").length; i++) {
+            if (document.getElementsByTagName("tr")[i].querySelector('input[type=checkbox]:checked')){
+                list.push(document.getElementsByTagName("tr")[i].querySelector('input[type=checkbox]:checked').id)
+            }}   
+        return list
+        
+    }
+
+    function update_quantity_button(){
+        let id = get_checked()
+        if (id.length==1){
+            document.getElementById("popupframe").src="/update-quantity?id="+id[0]
+            document.getElementById("iframe").hidden=false
+        }else{
+            alert("Check Only One Product")
+        }
+    }
+
+    function set_popup(popup_name){
+        const popups = {"add_product":"/add-product","delete_product":"/delete_product"}
+        document.getElementById("popupframe").src=popups[popup_name]
+        document.getElementById("iframe").hidden=false
+    }
+    function exitpopup(){
+        document.getElementById("iframe").hidden=true;
+    }
 </script>
 {% endblock %}
 

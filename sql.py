@@ -25,3 +25,7 @@ def delete(table_name,id):
 def search(table_name,id):
     data = query(f"SELECT * FROM {table_name} WHERE id LIKE {id}") 
     return [dict(zip([name[0] for name in data.description],i)) for i in data]
+
+def update_quantity(table_name,id,quantity):
+    query(f"UPDATE {table_name} SET quantity = {quantity} WHERE id LIKE {id}")
+    return print("updated")
