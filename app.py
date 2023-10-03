@@ -40,11 +40,10 @@ def add_product():
 @app.route("/update-quantity" ,methods=["GET","POST"])
 def update_quantitys():
     if request.method=="GET" and len(request.args)>0:
-        return render_template("update-quantity.html",product=search("products",request.args["id"])[0])
+        return render_template("update-quantity.html",product=search("products",request.args["id"]))
     if request.method=="POST":
         update_quantity(table_name = "products",id = request.form["id"],quantity = request.form["quantity"])
         return redirect("products")
-    
 
 @app.route("/delete-product" ,methods=["GET","POST"])
 def delete_product():
