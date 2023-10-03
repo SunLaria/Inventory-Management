@@ -43,6 +43,7 @@
     padding-right: 35px;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
 }
 .button:hover{
     /* background-color: rgb(173, 128, 173);*/
