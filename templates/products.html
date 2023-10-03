@@ -100,7 +100,7 @@
     function delete_product_button(){
         let id = get_checked()
         if (id.length>=1){
-            document.getElementById("popupframe").src="/delete_product?id="+id
+            document.getElementById("popupframe").src="/delete-product?id="+id
             document.getElementById("iframe").hidden=false
         }else{
             alert("Check One Or More Products")

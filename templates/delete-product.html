@@ -18,18 +18,19 @@
             background-color: whitesmoke;
             text-align: center;
         }
+
     </style>
 </head>
 <body>
-    <form action="/delete-quantity" method="POST" target="_parent">
-        <input type="text" name="id" id="" value="{{ product.id }}" hidden>
+    <form action="/delete-product" method="POST" target="_parent">
+        <input type="text" name="id" id="" value="{{ idd | map(attribute='id') | list }} " hidden>
         <h1>Delete Products??</h1>
         <div>
-        {% for number in product.id %}
-        {{ product.id }}
-        {% endfor %}
+            {% for number in idd %}
+            {{ number.name}}
+            {% endfor %}
         </div>
-        <button class="small-button">Yes</button>
+        <input type="submit" class="small-button" value="Yes">
         
     </form>
 </body>

@@ -43,9 +43,12 @@ def update_quantitys():
         return redirect("products")
     
 
-@app.route("/delete_product" ,methods=["GET","POST"])
+@app.route("/delete-product" ,methods=["GET","POST"])
 def delete_product():
     if request.method=="GET":
-        return render_template("delete-product.html",product=search("products",request.args["id"])[0])
+        return render_template("delete-product.html",idd=search("products",request.args["id"]))
     if request.method=="POST":
-        pass
+        data = request.form["id"]
+        return data
+        # delete('products',[i["id"] for i in request.form["id"]])
+        # return redirect("products")
