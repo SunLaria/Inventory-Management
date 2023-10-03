@@ -28,7 +28,10 @@ def add_product():
     if request.method=="GET":
         return render_template("add-product.html")
     if request.method=="POST":
-        latest_id = int(load("products")[-1]["id"])+1
+        try:
+            latest_id = int(load("products")[-1]["id"])+1
+        except:
+            latest_id=1
         product_info= {"id":latest_id,"name":request.form["name"],"quantity":request.form["quantity"],"category":request.form["category"],"avaiabillty":"none","price":request.form["price"]}
         add_row("products",product_info)
         return redirect("products")
@@ -48,7 +51,6 @@ def delete_product():
     if request.method=="GET":
         return render_template("delete-product.html",idd=search("products",request.args["id"]))
     if request.method=="POST":
-        data = request.form["id"]
-        return data
-        # delete('products',[i["id"] for i in request.form["id"]])
-        # return redirect("products")
+        data = request.form["id"][1:-2].split(",")
+        delete('products',data)
+        return redirect("products")
